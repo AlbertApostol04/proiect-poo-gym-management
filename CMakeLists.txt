@@ -136,7 +136,8 @@ add_executable(${MAIN_EXECUTABLE_NAME} main.cpp ${SOURCES}
         include/AbonamentCuIntrari.h
         src/AbonamentCuIntrari.cpp
         include/Abonament.h
-        include/AbonamentPerioada.h)
+        include/AbonamentPerioada.h
+        src/AbonamentPerioada.cpp)
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
 # NOTE: RUN_SANITIZERS is optional, if it's not present it will default to true

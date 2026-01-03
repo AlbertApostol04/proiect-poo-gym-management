@@ -7,17 +7,25 @@
 class AbonamentCuIntrari:public Abonament
 {
 private:
-    int nrIntariRamase;
+
+    int nrIntrariRamase;
+    static const double pretFix;
+
+
+
 
 public:
 
     AbonamentCuIntrari();
-    AbonamentCuIntrari(const int& intrari, const double& pret);
+    AbonamentCuIntrari(bool stud);
 
-    void setNrIntariRamase(const int& nr);
-    void setPret(const int& nr);
+    void setNrIntariRamase(int nr);
 
-    void getNrIntrariRamase();
+    int getNrIntrariRamase() const;
 
+
+
+    bool permiteIntrare() const override;
+    void checkIn() override;
 
 };

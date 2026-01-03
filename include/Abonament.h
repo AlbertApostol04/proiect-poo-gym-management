@@ -3,18 +3,31 @@
 
 class Abonament{
 
+protected:
+
     double pret;
-    std::string tip;
-    int valabiliate;
+    int zileRamase;
+    bool student;
+    static const int valabilitateNormala;
+    std::string tipAb;
 
 
-    virtual bool permiteIntrare() = 0;
-    virtual void checkIN() = 0;
+public:
 
-    void setPret(const int& val);
-    void setValabilitate(const std::string& perioada);
+    Abonament();
+    Abonament (bool stud);
+    virtual ~Abonament();
 
-    void getPret();
-    void getValabilitate();
+
+    virtual bool permiteIntrare() const = 0;
+    virtual void checkIn() = 0;
+
+
+    const std::string& getTipAb() const;
+
+    double getPret() const;
+    int getZileRamase() const;
+
+    static double PretAbonamentStudent(double pretNormal, bool stud);
 
 };
