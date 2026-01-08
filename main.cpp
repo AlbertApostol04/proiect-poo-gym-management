@@ -43,12 +43,13 @@ int main()
         {
             p = fabricaPlati.creeaza(sumaDePlata);
             p->proceseaza();
+            std::cout<<"Plata procesata pentru suma: "<<p->getSuma()<<"\n";
             plati.push_back(p);
             return true;
         }
         catch (const std::exception& e)
         {
-            std::cout << "Plata esuata: " << e.what() << "\n";
+            std::cout<<"Plata esuata: "<< e.what()<<"\n";
             delete p;
             return false;
         }
@@ -131,6 +132,7 @@ int main()
                         std::cout<<"Client gasit "<< *it << std::endl;
                         clientSelectatId.setVal(it->getIdClient());
                         clientSelectatNume.setVal(it->getNume());
+                        std::cout << "Selectat: "<<clientSelectatNume.getVal()<<" (ID "<< clientSelectatId.getVal()<<")\n";
                     }
                     else std::cout<<"Clientul cautat nu exista"<< std::endl;
                 }
@@ -168,6 +170,7 @@ int main()
                                 if (proceseazaPlata(a->getPret())) {
                                     abonamente.push_back(a);
                                     it->setAbonament(a.get());
+                                    std::cout<<"Tip: "<<a->getTipAb()<<" | Zile ramase: "<<a->getZileRamase()<<"\n";
                                     }
 
 
@@ -192,6 +195,7 @@ int main()
                                     if (proceseazaPlata(a->getPret())) {
                                         abonamente.push_back(a);
                                         it->setAbonament(a.get());
+                                        std::cout<<"Tip: "<<a->getTipAb()<<" | Zile ramase: "<<a->getZileRamase()<<"\n";
                                     }
                                     } catch (const std::exception& e) {
                                     std::cout << "Eroare abonament: " << e.what() << std::endl;
@@ -256,6 +260,7 @@ int main()
 
                                             abonamente.push_back(a);
                                             it->setAbonament(a.get());
+                                            std::cout<<"Tip: "<<a->getTipAb()<<" | Zile ramase: "<<a->getZileRamase()<<"\n";
 
                                             std::cout << "Antrenor alocat: " << it1->second.getNume() << std::endl;
                                         }
@@ -327,6 +332,7 @@ int main()
                         for (itMap=antrenori.begin(); itMap != antrenori.end(); ++itMap)
                         {
                             std::cout<<itMap->second<<"\n";
+                            std::cout<<"Locuri libere: "<<itMap->second.locuriLibere()<<"\n";
                         }
                     }
                 }
