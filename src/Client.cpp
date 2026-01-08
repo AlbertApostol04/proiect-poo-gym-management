@@ -9,6 +9,12 @@ Client::Client(): nume(""),email(""),nrTel(""),idClient(generatorId++),abonament
 Client::Client(const std::string& nume, const std::string& email, const std::string& telefon):
 nume(nume),email(email),nrTel(telefon),idClient(generatorId++),abonament(nullptr){}
 
+Client::Client(const Client& other)
+    : nume(other.nume), email(other.email), nrTel(other.nrTel),
+      idClient(generatorId++), abonament(other.abonament)
+{
+}
+
 int Client::getIdClient() const
 {
     return idClient;
@@ -75,7 +81,7 @@ std::istream& operator>>(std::istream& in, Client& c)
     return in;
 }
 
-
+// cppcheck-suppress operatorEqVarError
 Client& Client::operator=(const Client& c)
 {
     if (this == &c) return *this;
@@ -88,6 +94,7 @@ Client& Client::operator=(const Client& c)
 
     return *this;
 }
+
 
 
 Abonament* Client::getAbonament() {

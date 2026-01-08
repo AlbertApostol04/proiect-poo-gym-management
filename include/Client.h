@@ -21,6 +21,7 @@ public:
 
     Client();
     Client(const std::string& nume,const std::string& email,const std::string& nrTel);
+    Client(const Client& other);
     ~Client();
 
     int getIdClient() const;
