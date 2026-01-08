@@ -8,6 +8,7 @@ private:
     double baniPrimiti;
 
 public:
+
     PlataCash();
     PlataCash(double suma, double baniPrimiti);
 
