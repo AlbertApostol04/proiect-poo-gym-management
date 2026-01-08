@@ -113,6 +113,7 @@ int main()
                     std::getline(std::cin,nrtel);
                     Client c(nume,email,nrtel);
 
+
                     clienti.push_back(c);
 
                     std::cout<<"Client adaugat cu succes! ID: "<<c.getIdClient()<<"\n";
