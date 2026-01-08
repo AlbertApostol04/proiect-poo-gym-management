@@ -21,8 +21,8 @@ std::unique_ptr<Plata> FabricaPlati::creeaza(double sumaDePlata) const
         double baniPrimiti=0.0;
         std::cout<<"Introduceti suma primita (cash): ";
         std::cin>>baniPrimiti;
-
         return std::make_unique<PlataCash>(sumaDePlata, baniPrimiti);
+
     }
     if (tip == 2)
     {

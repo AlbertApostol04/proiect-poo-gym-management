@@ -8,6 +8,7 @@ class Abonament;
 class Client{
 
 private:
+
     std::string nume;
     std::string email;
     std::string nrTel;
@@ -37,7 +38,6 @@ public:
 
     bool areAbonament() const;
     void setAbonament(Abonament* a);
-
 
     Client& operator=(const Client& c);
 };

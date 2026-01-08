@@ -30,9 +30,7 @@ const std::string& Client::getNrTel() const
     return nrTel;
 }
 
-
 Client::~Client()=default;
-
 
 void Client::setNume(const std::string& Nume)
 {
