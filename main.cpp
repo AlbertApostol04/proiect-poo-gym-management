@@ -35,13 +35,24 @@ int main()
 
     FabricaPlati fabricaPlati;
 
-    auto proceseazaPlata = [&](double sumaDePlata) -> bool
+    auto proceseazaPlata= [&](double sumaDePlata)->bool
     {
-        Plata* p = nullptr;
+        Plata* p= nullptr;
 
         try
         {
-            p = fabricaPlati.creeaza(sumaDePlata);
+            p= fabricaPlati.creeaza(sumaDePlata);
+            auto*pcash=dynamic_cast<PlataCash*>(p);
+
+            if(pcash != nullptr)
+            {
+                double baniPrimiti=0.0;
+                std::cout<<"Introdu suma primita cash:";
+                std::cin>>baniPrimiti;
+                pcash->setBaniPrimiti(baniPrimiti);
+            }
+
+
             p->proceseaza();
             std::cout<<"Plata procesata pentru suma: "<<p->getSuma()<<"\n";
             plati.push_back(p);
@@ -49,7 +60,7 @@ int main()
         }
         catch (const std::exception& e)
         {
-            std::cout<<"Plata esuata: "<< e.what()<<"\n";
+            std::cout<<"Plata esuata: "<<e.what()<<"\n";
             delete p;
             return false;
         }
