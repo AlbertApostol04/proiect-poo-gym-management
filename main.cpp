@@ -119,7 +119,7 @@ int main()
                 }
                 else if (opt2==2)
                 {
-                    for(int i=0; i < clienti.size(); i++)
+                    for(size_t i=0; i < clienti.size(); i++)
                     {
                         std::cout<<clienti[i]<<"\n";
                     }
@@ -385,7 +385,7 @@ int main()
 
 
 
-    for (int i = 0; i< plati.size(); i++)
+    for (size_t i = 0; i< plati.size(); i++)
     {
         delete plati[i];
     }
