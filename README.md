@@ -18,7 +18,7 @@ Aplicație in C++(consola) pentru a gestiona clienții unei săli de fitness: cr
   - AbonamentCuIntrari(8 intrări)
   - AbonamentPerioada(abonament cu 1/7/14/28 zile)
   - AbonamentCuAntrenor(ședinte + numele antrenorului alocat)  
-**Toate abonamentele expiră după 28 de zile de la cumpărare!**
+**Note: Toate abonamentele expiră după 28 de zile de la cumpărare!**
 
 - Plăți :
   - PlataCash(rest sau sumă insuficientă->excepție)
