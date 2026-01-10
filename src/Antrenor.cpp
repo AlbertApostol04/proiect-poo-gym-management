@@ -160,7 +160,7 @@ bool operator<(const Antrenor& a1,const Antrenor& a2)
     return a1.getIdAntrenor()<a2.getIdAntrenor();
 }
 
-void Antrenor::afiseazaClienti(std::ostream& out) const // NOU
+void Antrenor::afiseazaClienti(std::ostream& out) const
 {
     out<<"Antrenor: "<<numeAntrenor
     <<"(ID "<< idAntrenor<<") - Clienti: ";
@@ -179,7 +179,7 @@ void Antrenor::afiseazaClienti(std::ostream& out) const // NOU
     out<<"\n";
 }
 
-bool Antrenor::checkIn() const // NOU
+bool Antrenor::checkIn() const
 {
     if (nrClientiCurenti<=0)
     {

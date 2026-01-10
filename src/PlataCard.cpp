@@ -15,7 +15,6 @@ PlataCard::PlataCard(double s)
     setCardValid(true);
 }
 
-
 bool PlataCard::getCardValid() const
 {
     return cardValid;
@@ -25,6 +24,7 @@ void PlataCard::setCardValid(bool v)
 {
     cardValid = v;
 }
+
 
 double PlataCard::proceseaza()
 {

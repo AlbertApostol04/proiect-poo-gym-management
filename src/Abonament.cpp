@@ -1,5 +1,6 @@
 #include "Abonament.h"
 
+
 const int Abonament::valabilitateNormala = 28;
 
 Abonament::Abonament()

@@ -73,7 +73,7 @@ int main()
     antrenori[Mihai.getIdAntrenor()] = Mihai;
     antrenori[Vlad.getIdAntrenor()] = Vlad;
 
-
+ 
     while (true)
     {
         std::cout<<"Introduceti 1 pentru a intra in meniul clienti\n";

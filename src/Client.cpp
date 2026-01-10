@@ -16,6 +16,7 @@ Client::Client(const Client& other)
 {
 }
 
+
 int Client::getIdClient() const
 {
     return idClient;
