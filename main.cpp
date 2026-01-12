@@ -14,6 +14,7 @@
 #include "PlataCash.h"
 #include "PlataCard.h"
 #include "FabricaPlati.h"
+#include "AbonamentPerioadaAntrenor.h"
 
 int main()
 {
@@ -178,6 +179,7 @@ int main()
                             std::cout<<"Introduceti numarul 1 pentru abonament cu 8 intrari.\n";
                             std::cout<<"Introduceti numarul 2 pentru abonament cu intrari nelimitate.\n";
                             std::cout<<"Introduceti numarul 3 pentru abonament cu antrenamente cu antrenor privat.\n";
+                            std::cout<<"Introduceti numarul 4 pentru abonament cu intrari nelimitate + antrenor privat.\n";
 
                             std::cin>>nr;
 
@@ -225,7 +227,7 @@ int main()
                                     std::cout << "Eroare abonament: " << e.what() << std::endl;
                                 }
                             }
-                            else if (nr ==3)
+                            else if (nr == 3)
                             {
                                 try
                                 {
@@ -295,6 +297,81 @@ int main()
                                     std::cout<<"Eroare"<<e.what()<<std::endl;
                                 }
                             }
+                            else if (nr == 4)
+                            {
+                                try
+                                {
+
+                                    std::cout<<"Introduceti numarul de sesiuni dorite:\n";
+                                    int sesiuni;
+                                    std::cin>>sesiuni;
+                                    if (sesiuni <= 0)sesiuni=1;
+
+                                    std::cout<<"Pentru abonamentul cu intrari nelimitat avem urmatoarel variante:\nAbonament de 1 zile.\n Abonament de 7 zile. \n Abonament de 14 zile.\n Abonament de 28 zile.\n Introduceti perioada dorita:\n";
+                                    int zile;
+                                    std::cin>>zile;
+
+                                    std::cout<<"Sunteti student?\n Introduceti 1 daca sunteti student(a).\n";
+                                    int verif;
+                                    bool stud=false;
+                                    std::cin>>verif;
+                                    if (verif==1)
+                                        stud=true;
+
+                                    auto it1= std::min_element(antrenori.begin(), antrenori.end(),
+                                        [](const auto& p1, const auto& p2)
+                                        {
+                                            const Antrenor& t1=p1.second;
+                                            const Antrenor& t2=p2.second;
+
+                                            const bool verif1 =t1.disponibil();
+                                            const bool verif2 = t2.disponibil();
+
+                                            if(verif1!=verif2) return verif1;
+
+                                            if (verif1)
+                                            {
+                                               if (t1.getNrClienti()!= t2.getNrClienti())
+                                                   return t1.getNrClienti()<t2.getNrClienti();
+                                            }
+
+                                            return p1.first < p2.first;
+                                        });
+
+                                    if (it1==antrenori.end() || !it1->second.disponibil())
+                                    {
+                                        std::cout << "Nu exista antrenori disponibili in acest moment\n";
+                                    }
+                                    else
+                                    {
+                                        auto a = std::make_shared<AbonamentPerioadaAntrenor>(zile, sesiuni, stud);
+
+                                        auto* abAntrenor = dynamic_cast<AbonamentPerioadaAntrenor*>(a.get());
+                                        if (!abAntrenor) {
+                                            throw std::runtime_error("Eroare interna: abonamentul ales nu include antrenori.");
+                                        }
+
+                                        std::string numeAntrenor = it1->second.getNume();
+                                        abAntrenor->setNumeAntrenor(numeAntrenor);
+
+                                        if (proceseazaPlata(a->getPret())) {
+                                            it1->second.alocaClient(it->getIdClient());
+                                            antrenorSelectat.setVal(it1->first);
+
+                                            abonamente.push_back(a);
+                                            it->setAbonament(a.get());
+                                            std::cout<<"Tip: "<<a->getTipAb()<<" | Zile ramase: "<<a->getZileRamase()<<"\n";
+
+                                            std::cout << "Antrenor alocat: " << it1->second.getNume() << std::endl;
+                                        }
+                                    }
+                                }
+                                catch (const std::exception& e)
+                                {
+                                    std::cout<<"Eroare"<<e.what()<<std::endl;
+                                }
+                            }
+
                             else std::cout<<"Optiune invalida";
                         }
                         else std::cout<<"Clientul are deja abonament";
@@ -317,10 +394,10 @@ int main()
                     else if (!it->areAbonament())
                         std::cout<<"Clientul nu are abonament\n";
                     else
-                    {   const auto*abT=dynamic_cast<const AbonamentCuAntrenor*>(it->getAbonament());
+                    {   const auto*abT= dynamic_cast<const AbonamentCuAntrenor*>(it->getAbonament());
                         if (abT != nullptr)
                         {
-                            std::cout << "Abonament cu antrenor: " << abT->getNumeAntrenor() << "\n";
+                            std::cout<<"Abonament cu antrenor: "<<abT->getNumeAntrenor() << "\n";
                         }
                         it->getAbonament()->checkIn();
                     }
@@ -383,6 +460,7 @@ int main()
                         }
                     }
                 }
+
                 else if (opt3 == 3)
                 {
                     int idAntrenor;
@@ -408,3 +486,6 @@ int main()
     
     return 0;
 }
+
+
+//antrenorul sa fie pentru orice tip de abonament si sa vedem cat de aglomerat pentru un interval de ore

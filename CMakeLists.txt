@@ -150,7 +150,9 @@ add_executable(${MAIN_EXECUTABLE_NAME} main.cpp ${SOURCES}
         src/PlataCash.cpp
         src/PlataCard.cpp
         include/FabricaPlati.h
-        src/FabricaPlati.cpp)
+        src/FabricaPlati.cpp
+        "include/AbonamentPerioadaAntrenor.h"
+        src/AbonamentPerioadaAntrenor.cpp)
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
 # NOTE: RUN_SANITIZERS is optional, if it's not present it will default to true

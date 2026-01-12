@@ -12,6 +12,7 @@ public:
     virtual ~Plata() = default;
 
     double getSuma() const;
+
     virtual double proceseaza() = 0;
 
 };

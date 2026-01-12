@@ -2,9 +2,11 @@
 #include "AbonamentCuIntrari.h"
 
 
+
 class AbonamentCuAntrenor: public AbonamentCuIntrari
 {
 private:
+
     std::string numeAntrenor;
     static const double pretPeSedinta;
     static const int durataSedeinta;
